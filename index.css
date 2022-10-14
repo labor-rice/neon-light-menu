@@ -1,0 +1,57 @@
+#menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0;
+}
+
+.menu-container .toggler {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  border: 1px solid #ccc;
+  background: #fff;
+  transition: transform 0.5s;
+}
+
+.menu-container.expanded .toggler {
+  transform: rotate(315deg);
+}
+
+/* 菜单未展开时 */
+.menu-container li {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  border: 1px solid #ccc;
+  position: absolute;
+  list-style: none;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: transform 0.5s;
+  transition-delay: calc(0.1s * var(--idx));
+  background: var(--neon-color);
+}
+
+/* 让图标反向旋转相同角度回正 */
+.menu-container li a {
+  transform: rotate(calc(360deg / -8 * var(--idx)));
+}
+
+/* 菜单展开时 */
+.menu-container.expanded li {
+  transform: rotate(calc(360deg / 8 * var(--idx))) translateX(120px);
+}
+
+.menu-container.expanded li a:hover {
+  color: #06283d;
+  box-shadow: 0 0 30px var(--neon-color), 0 0 50px var(--neon-color), 0 0 100px var(--neon-color);
+  transition: 0s;
+}
+
